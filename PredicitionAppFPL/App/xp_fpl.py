@@ -250,3 +250,30 @@ def get_top_10_players(df):
 top_10_players = get_top_10_players(sorted_players)
 print("\nTop 10 Players:")
 top_10_players
+
+def sorted_players(df):
+    """Sorts players by expected points in descending order."""
+    return df.sort_values('expected_points', ascending=False)
+
+
+# Function to fetch the next gameweek
+def get_next_gameweek():
+    """
+    Determines the next gameweek by analyzing the fixture data.
+
+    Returns:
+        int: The ID of the next gameweek.
+    """
+    # Fetch fixture data from the FPL API
+    url = 'https://fantasy.premierleague.com/api/fixtures/'
+    response = requests.get(url)
+    fixtures = pd.DataFrame(response.json())
+
+    # Filter for fixtures that haven't finished yet
+    upcoming_fixtures = fixtures[fixtures['finished'] == False]
+
+    # Find the next gameweek by getting the minimum event ID
+    if not upcoming_fixtures.empty:
+        return int(upcoming_fixtures['event'].min())
+    else:
+        return None  # Handle the case where no upcoming fixtures are found

@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-import pandas as pd
+#import pandas as pd
 from typing import List, Dict
 from xp_fpl import (  # Assuming the Colab code is saved in colab_code.py
     get_fpl_data,
