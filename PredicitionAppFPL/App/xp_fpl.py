@@ -107,4 +107,21 @@ sorted_players_df = fpl_data.sort_values('expected_points', ascending=False)
 def get_top_10_players(df):
     return df.sort_values('expected_points', ascending=False).head(10)[['web_name', 'expected_points', 'position', 'price']]
 
-# Add 'position' column to represent player positions
+def sorted_players(df):
+    """Sorts players by expected points in descending order."""
+    return df.sort_values('expected_points', ascending=False)
+
+def get_top_players_by_position(df, position, top_n=5):
+    """
+    Gets the top N players for a specific position based on expected points.
+
+    Args:
+        df: The DataFrame containing player data.
+        position: The position to filter by ('GK', 'DEF', 'MID', 'FWD').
+        top_n: The number of top players to return.
+
+    Returns:
+        A DataFrame with the top N players for the specified position.
+    """
+    position_players = df[df['position'] == position].sort_values('expected_points', ascending=False).head(top_n)
+    return position_players[['web_name', 'expected_points', 'price']]
