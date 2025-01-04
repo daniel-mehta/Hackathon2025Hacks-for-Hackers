@@ -1,4 +1,20 @@
-# xp_fpl.py
+"""
+Fetches Fantasy Premier League data, processes it to calculate expected points for players,
+and saves the results to CSV files. The script includes functions to sort players by expected
+points and retrieve top players by position.
+
+Modules:
+    requests: To make HTTP requests to the FPL API.
+    pandas: To handle data manipulation and storage.
+
+Functions:
+    get_fpl_data: Fetches player data from the FPL API and returns it as a DataFrame.
+    calculate_expected_points: Computes expected points for a player based on various factors.
+    map_element_type_to_position: Maps player element types to their respective positions.
+    get_top_10_players: Retrieves the top 10 players based on expected points.
+    sorted_players: Sorts players by expected points in descending order.
+    get_top_players_by_position: Gets the top N players for a specific position based on expected points.
+"""
 import requests
 import pandas as pd
 

@@ -1,3 +1,15 @@
+"""
+This module defines a FastAPI application for the Fantasy Premier League (FPL) Prediction App.
+
+Routes:
+    - GET /: Returns a welcome message.
+    - GET /top-10-players: Returns the top 10 players based on expected points.
+    - GET /all-players: Returns a sorted list of all players with their data.
+    - GET /best-per-position: Returns the top players for each position (GK, DEF, MID, FWD) based on expected points.
+
+The application uses functions from the xp_fpl module to fetch and process FPL data.
+"""
+
 from fastapi import FastAPI
 from xp_fpl import (
     get_fpl_data,
