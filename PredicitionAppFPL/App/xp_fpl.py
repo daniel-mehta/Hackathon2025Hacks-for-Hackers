@@ -2,14 +2,18 @@
 import requests
 import pandas as pd
 
-def get_fpl_data():
+def get_fpl_data() -> pd.DataFrame:
+    """
+    Fetch Fantasy Premier League data from the API and return it as a pandas DataFrame.
+
+    Returns:
+        pd.DataFrame: DataFrame containing Fantasy Premier League player information.
+    """
     url = 'https://fantasy.premierleague.com/api/bootstrap-static/'
     response = requests.get(url)
     json_data = response.json()
-
     players = json_data['elements']
     players_df = pd.DataFrame(players)
-
     return players_df
 
 fpl_data = get_fpl_data()
